@@ -20,13 +20,14 @@ public class TestEntity {
 	private Integer id;
 	@Column(nullable = false)
 	private String testName;
+	private int testTime;
 	@Temporal(TemporalType.DATE)
 	private Date testDateBegin;
 	@Temporal(TemporalType.DATE)
 	private Date testDateFinish;
 
 
-	@JsonIgnore
+
 	@OneToMany(mappedBy = "test")
 	private List<UserTestEntity> userTestEntityList = new ArrayList<>();
 

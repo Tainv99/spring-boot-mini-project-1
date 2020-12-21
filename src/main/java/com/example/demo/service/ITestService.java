@@ -7,17 +7,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ITestService {
-	ResponseEntity<?> findAll();
+	public List<TestEntity> findAll();
 
-	Optional<TestEntity> findById(Integer id);
+	public Optional<TestEntity> findById(Integer id);
 
-	ResponseEntity<?> saveAll(List<TestEntity> testEntities);
+	public void save(TestEntity testEntity);
 
-	Optional<TestEntity> findByName(String name);
+	public void deleteTestById(Integer id);
 
-	ResponseEntity<?> deleteTestById(Integer id);
-
-	ResponseEntity<?> updateTest(TestEntity testEntity, Integer id);
+	public void updateTest(TestEntity testEntity, Integer id);
 
 	String addListTestWithUser(List<Integer> idListUserRequest, Integer testId);
 
