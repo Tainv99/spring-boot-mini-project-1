@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +57,7 @@ public class TestService implements ITestService {
 		}
 	}
 
+	//them user theo bai test
 	@Override
 	public String addListTestWithUser(List<Integer> idListUserRequest, Integer testId) {
 		Optional<TestEntity> testEntity = testRepository.findById(testId);
@@ -71,6 +71,7 @@ public class TestService implements ITestService {
 		return "đã thêm thành công";
 	}
 
+	//them cau hoi theo bai test
 	@Override
 	public String addListQuestionsWithTest(List<Integer> idListQuestionsTest, Integer testId) {
 		Optional<TestEntity> testEntity = testRepository.findById(testId);

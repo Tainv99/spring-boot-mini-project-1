@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,28 +15,29 @@ import java.util.List;
 @Entity
 @Table(name = "tbl_tests")
 public class TestEntity {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String testName;
-	private int testTime;
-	@Temporal(TemporalType.DATE)
+
+	@Column(nullable = false)
+	private Integer testTime;
+	@Temporal(TemporalType.TIMESTAMP)
+
 	private Date testDateBegin;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date testDateFinish;
 
-
-
-	@OneToMany(mappedBy = "test")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "test")
 	private List<UserTestEntity> userTestEntityList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "test")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "test")
 	private List<QuestionTestEntity> questionTestEntityList = new ArrayList<>();
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "test")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "test")
 	private List<TaskEntity> taskEntityList = new ArrayList<>();
 
 }

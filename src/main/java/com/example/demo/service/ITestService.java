@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.QuestionEntity;
 import com.example.demo.entity.TestEntity;
 import org.springframework.http.ResponseEntity;
 
@@ -17,8 +18,8 @@ public interface ITestService {
 
 	public void updateTest(TestEntity testEntity, Integer id);
 
-	String addListTestWithUser(List<Integer> idListUserRequest, Integer testId);
+	public String addListTestWithUser(List<Integer> idListUserRequest, Integer testId);
 
-	String addListQuestionsWithTest(List<Integer> idListQuestionsTest, Integer testId);
+	public String addListQuestionsWithTest(List<Integer> idListQuestionsTest, Integer testId);
 
 }
