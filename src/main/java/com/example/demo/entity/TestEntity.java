@@ -20,9 +20,11 @@ public class TestEntity {
 	private Integer id;
 	@Column(nullable = false, unique = true)
 	private String testName;
+
 	@Column(nullable = false)
 	private Integer testTime;
 	@Temporal(TemporalType.TIMESTAMP)
+
 	private Date testDateBegin;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date testDateFinish;

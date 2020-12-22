@@ -36,33 +36,25 @@ public class TestService implements ITestService {
 	}
 
 	@Override
-	public ResponseEntity<?> save(TestEntity testEntity) {
+	public void save(TestEntity testEntity) {
 		testRepository.save(testEntity);
-		return new ResponseEntity("Tạo bài thi thành công", HttpStatus.OK);
 	}
 
 	@Override
-	public Optional<TestEntity> findByName(String name) {
-		return testRepository.findByName(name);
-	}
-
-	@Override
-	public ResponseEntity<?> deleteTestById(Integer id) {
+	public void deleteTestById(Integer id) {
 		testRepository.deleteById(id);
-		return new ResponseEntity(new MessageResponse(true, "Xóa thành công"), HttpStatus.OK);
 	}
 
 	@Override
-	public ResponseEntity<?> updateTest(TestEntity testEntity, Integer id) {
+	public void updateTest(TestEntity testEntity, Integer id) {
 		Optional<TestEntity> updateTest = testRepository.findById(id);
 		if (updateTest.isPresent()) {
-//            updateTest.get().setUser(testEntity.getUser());
+            updateTest.get().setTestTime(testEntity.getTestTime());
 			updateTest.get().setTestName(testEntity.getTestName());
 			updateTest.get().setTestDateBegin(testEntity.getTestDateBegin());
 			updateTest.get().setTestDateFinish(testEntity.getTestDateFinish());
 			testRepository.save(updateTest.get());
 		}
-		return new ResponseEntity(new MessageResponse(true, "Cập nhật thành công"), HttpStatus.OK);
 	}
 
 	//them user theo bai test

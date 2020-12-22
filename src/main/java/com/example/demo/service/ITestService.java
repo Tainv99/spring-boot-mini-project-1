@@ -12,13 +12,11 @@ public interface ITestService {
 
 	public Optional<TestEntity> findById(Integer id);
 
-	public ResponseEntity<?> save(TestEntity testEntity);
+	public void save(TestEntity testEntity);
 
-	public Optional<TestEntity> findByName(String name);
+	public void deleteTestById(Integer id);
 
-	public ResponseEntity<?> deleteTestById(Integer id);
-
-	public ResponseEntity<?> updateTest(TestEntity testEntity, Integer id);
+	public void updateTest(TestEntity testEntity, Integer id);
 
 	public String addListTestWithUser(List<Integer> idListUserRequest, Integer testId);
 
