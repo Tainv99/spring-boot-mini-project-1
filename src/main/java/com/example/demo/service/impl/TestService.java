@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.common.Common;
 import com.example.demo.entity.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.ITestService;
@@ -67,7 +68,8 @@ public class TestService implements ITestService {
 				userTestRepository.save(userTestEntity);
 			}
 		}
-		return "đã thêm thành công";
+
+		return "đã cập nhật thành công";
 	}
 
 	//them cau hoi theo bai test
@@ -85,6 +87,11 @@ public class TestService implements ITestService {
 		}
 
 		return "đã cập nhật thành công";
+	}
+
+	@Override
+	public List<TestEntity> getAllTestAlready() {
+		return testRepository.findAllTestAlready(Common.getUserId());
 	}
 
 
