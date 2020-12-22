@@ -74,21 +74,6 @@ public class TestController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		}
 	}
-	//hiển thị bài thi theo id
-	@GetMapping("/{id}")
-	public ResponseEntity<?> findById(@Valid @PathVariable Integer id) {
-		timeStamp = Common.getTimeStamp();
-		try {
-			Optional<TestEntity> testEntity = testService.findById(id);
-			response = new ResponseEntityBO<>(Constants.SUCCESS_RESPONSE, "Thành công", timeStamp, testEntity.get());
-			logger.info(Common.createMessageLog(id, response, Common.getUserName(), timeStamp, "findbyId"));
-			return ResponseEntity.status(HttpStatus.OK).body(response);
-		} catch (Exception e) {
-			response = new BaseMessage(Constants.ERROR_RESPONSE, "Không tìm thấy id bài thi", timeStamp);
-			logger.error(Common.createMessageLog(id, response, Common.getUserName(), timeStamp, "findByid"));
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-		}
-	}
 	//thêm bài thi
 	@PostMapping
 	public ResponseEntity<?> save(@Valid @RequestBody TestEntity test) {
